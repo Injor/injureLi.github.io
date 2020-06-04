@@ -12,7 +12,7 @@
 ### 选择主题
 ```git clone https://github.com/theme-next/hexo-theme-next themes/next```
 ### 修改配置
-```
+``` bash
 title: injuryLi的学习笔记
 author: injuryLi
 language: zh-Hans
@@ -25,7 +25,16 @@ deploy:
 ### 测试
 ```hexo s```
 ### 发布
-```
+``` bash
 npm install hexo-deployer-git  --save
 hexo clean && hexo g && hexo d
+```
+## 写作
+### 新建文件
+``` bash
+hexo new "My New Post"
+```
+### 新建标签
+``` bash
+hexo new page "tags"
 ```
