@@ -20,23 +20,25 @@
     var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="职能 请求接入 业务聚合 下游服务注册及管理 API聚合与数据编排，针对API的定制化、复用   中介策略。实现鉴权、反爬、路由、分流、流控、降级等策略 基础安全保障，侧重应用层安保能力建设 流量治理，侧重于流量隔离与调度   统一管理。提供配置管理平台，对所有API服务的调用生命周期和中介策略进行统一管理  分类 流量网关。与后端业务无关，侧重于全局流量的安全与稳定 业务网关。针对某个业务的流控">
+  <meta name="description" content="要解决的问题 协议约定问题 如何规定远程调用的语法？ 参数如何传递，什么时候是头，什么时候是尾？ 如何表示数据？   传输协议问题 发生错误、重传、丢包、性能问题怎么办？   服务发现问题 一个服务实现了哪些远程调用，从哪个端口可以访问？    协议类型   文本类 二进制类    SOAP Hessian2   RESTful Protocol Buffers    基于XML的SOAP协议（S">
 <meta property="og:type" content="article">
-<meta property="og:title" content="API网关">
-<meta property="og:url" content="http://yoursite.com/2020/06/09/API%E7%BD%91%E5%85%B3/index.html">
+<meta property="og:title" content="RPC远程调用">
+<meta property="og:url" content="http://yoursite.com/2020/06/RPC%E8%BF%9C%E7%A8%8B%E8%B0%83%E7%94%A8/index.html">
 <meta property="og:site_name" content="injuryLi的学习笔记">
-<meta property="og:description" content="职能 请求接入 业务聚合 下游服务注册及管理 API聚合与数据编排，针对API的定制化、复用   中介策略。实现鉴权、反爬、路由、分流、流控、降级等策略 基础安全保障，侧重应用层安保能力建设 流量治理，侧重于流量隔离与调度   统一管理。提供配置管理平台，对所有API服务的调用生命周期和中介策略进行统一管理  分类 流量网关。与后端业务无关，侧重于全局流量的安全与稳定 业务网关。针对某个业务的流控">
-<meta property="og:image" content="http://yoursite.com/2020/06/09/API%E7%BD%91%E5%85%B3/Zuul%E7%BD%91%E5%85%B3%E6%9E%B6%E6%9E%84.png">
-<meta property="og:image" content="http://yoursite.com/2020/06/09/API%E7%BD%91%E5%85%B3/SpringCloudGateway.png">
-<meta property="article:published_time" content="2020-06-09T13:04:57.000Z">
-<meta property="article:modified_time" content="2020-06-10T07:57:31.285Z">
+<meta property="og:description" content="要解决的问题 协议约定问题 如何规定远程调用的语法？ 参数如何传递，什么时候是头，什么时候是尾？ 如何表示数据？   传输协议问题 发生错误、重传、丢包、性能问题怎么办？   服务发现问题 一个服务实现了哪些远程调用，从哪个端口可以访问？    协议类型   文本类 二进制类    SOAP Hessian2   RESTful Protocol Buffers    基于XML的SOAP协议（S">
+<meta property="og:image" content="http://yoursite.com/2020/06/RPC%E8%BF%9C%E7%A8%8B%E8%B0%83%E7%94%A8/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/06/RPC%E8%BF%9C%E7%A8%8B%E8%B0%83%E7%94%A8/Dubbo%E8%B0%83%E7%94%A8%E6%96%B9%E5%BC%8F.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/06/RPC%E8%BF%9C%E7%A8%8B%E8%B0%83%E7%94%A8/OpenFeign%E8%B0%83%E7%94%A8%E6%96%B9%E5%BC%8F.png">
+<meta property="article:published_time" content="2020-06-10T01:35:59.000Z">
+<meta property="article:modified_time" content="2020-06-10T09:41:21.731Z">
 <meta property="article:author" content="injuryLi">
 <meta property="article:tag" content="微服务">
-<meta property="article:tag" content="网关">
+<meta property="article:tag" content="RPC">
+<meta property="article:tag" content="网络">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/2020/06/09/API%E7%BD%91%E5%85%B3/Zuul%E7%BD%91%E5%85%B3%E6%9E%B6%E6%9E%84.png">
+<meta name="twitter:image" content="http://yoursite.com/2020/06/RPC%E8%BF%9C%E7%A8%8B%E8%B0%83%E7%94%A8/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84.jpg">
 
-<link rel="canonical" href="http://yoursite.com/2020/06/09/API%E7%BD%91%E5%85%B3/">
+<link rel="canonical" href="http://yoursite.com/2020/06/RPC%E8%BF%9C%E7%A8%8B%E8%B0%83%E7%94%A8/">
 
 
 <script id="page-configurations">
@@ -49,7 +51,7 @@
   };
 </script>
 
-  <title>API网关 | injuryLi的学习笔记</title>
+  <title>RPC远程调用 | injuryLi的学习笔记</title>
   
 
 
@@ -154,7 +156,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/09/API%E7%BD%91%E5%85%B3/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/RPC%E8%BF%9C%E7%A8%8B%E8%B0%83%E7%94%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -167,7 +169,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          API网关
+          RPC远程调用
         </h1>
 
         <div class="post-meta">
@@ -176,16 +178,10 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
+              
 
-              <time title="Created: 2020-06-09 21:04:57" itemprop="dateCreated datePublished" datetime="2020-06-09T21:04:57+08:00">2020-06-09</time>
+              <time title="Created: 2020-06-10 09:35:59 / Modified: 17:41:21" itemprop="dateCreated datePublished" datetime="2020-06-10T09:35:59+08:00">2020-06-10</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-06-10 15:57:31" itemprop="dateModified" datetime="2020-06-10T15:57:31+08:00">2020-06-10</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -207,45 +203,65 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="职能"><a href="#职能" class="headerlink" title="职能"></a>职能</h2><ul>
-<li>请求接入</li>
-<li>业务聚合<ul>
-<li>下游服务注册及管理</li>
-<li>API聚合与数据编排，针对API的定制化、复用</li>
+        <h2 id="要解决的问题"><a href="#要解决的问题" class="headerlink" title="要解决的问题"></a>要解决的问题</h2><ul>
+<li>协议约定问题<ul>
+<li>如何规定远程调用的语法？</li>
+<li>参数如何传递，什么时候是头，什么时候是尾？</li>
+<li>如何表示数据？</li>
 </ul>
 </li>
-<li>中介策略。实现鉴权、反爬、路由、分流、流控、降级等策略<ul>
-<li>基础安全保障，侧重应用层安保能力建设</li>
-<li>流量治理，侧重于流量隔离与调度</li>
+<li>传输协议问题<ul>
+<li>发生错误、重传、丢包、性能问题怎么办？</li>
 </ul>
 </li>
-<li>统一管理。提供配置管理平台，对所有API服务的调用生命周期和中介策略进行统一管理</li>
+<li>服务发现问题<ul>
+<li>一个服务实现了哪些远程调用，从哪个端口可以访问？</li>
 </ul>
-<h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><ul>
-<li>流量网关。与后端业务无关，侧重于全局流量的安全与稳定</li>
-<li>业务网关。针对某个业务的流控，下流多API聚合等</li>
+</li>
 </ul>
-<h2 id="定位"><a href="#定位" class="headerlink" title="定位"></a>定位</h2><p>作为网关，最重要的是安全稳定，其次是降本增效，如何在保证安全稳定的前提下，以最快的速度帮助业务达成，这就是API网关的定位</p>
-<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><h3 id="Kong"><a href="#Kong" class="headerlink" title="Kong"></a>Kong</h3><blockquote>
-<p>Kong是一个在Nginx运行的Lua应用程序，由lua-nginx-module实现。Kong和OpenResty一起打包发行，其中已经包含了lua-nginx-module。OpenResty不是Nginx的分支，而是一组扩展其功能的模块。</p>
-</blockquote>
-<h3 id="Tyk"><a href="#Tyk" class="headerlink" title="Tyk"></a>Tyk</h3><blockquote>
-<p>Tyk是一个开源的、轻量级的、快速可伸缩的 API网关，支持配额和速度限制，支持认证和数据分析，支持多用户多组织，提供全 RESTful API。基于 go 编写。</p>
-</blockquote>
-<h3 id="Traefik"><a href="#Traefik" class="headerlink" title="Traefik"></a>Traefik</h3><blockquote>
-<p>Traefik 是一个现代 HTTP 反向代理和负载均衡器，可以轻松部署微服务，Traeffik 可以与您现有的组件（Docker、Swarm，Kubernetes，Marathon，Consul，Etcd，…）集成，并自动动态配置。</p>
-</blockquote>
-<h3 id="Ambassador"><a href="#Ambassador" class="headerlink" title="Ambassador"></a>Ambassador</h3><blockquote>
-<p>Ambassador 是一个开源的微服务 API 网关，建立在 Envoy 代理之上，为用户的多个团队快速发布，监控和更新提供支持，支持处理 Kubernetes ingress controller 和负载均衡等功能，可以与 Istio 无缝集成。</p>
-</blockquote>
-<h3 id="Netflix-Zuul"><a href="#Netflix-Zuul" class="headerlink" title="Netflix Zuul"></a>Netflix Zuul</h3><blockquote>
-<p>Zuul 是一种提供动态路由、监视、弹性、安全性等功能的边缘服务。Zuul 是 Netflix 出品的一个基于 JVM 路由和服务端的负载均衡器。</p>
-</blockquote>
-<p><img src="/2020/06/09/API%E7%BD%91%E5%85%B3/Zuul%E7%BD%91%E5%85%B3%E6%9E%B6%E6%9E%84.png" alt="Zuul网关架构"></p>
-<h3 id="SpringCloud-Gateway"><a href="#SpringCloud-Gateway" class="headerlink" title="SpringCloud Gateway"></a>SpringCloud Gateway</h3><blockquote>
-<p>Gateway is built on Spring Framework 5, Project Reactor and Spring Boot 2 using non-blocking APIs. Websockets are supported and it’s a much better developer experience since it’s tightly integrated with Spring.</p>
-</blockquote>
-<p><img src="/2020/06/09/API%E7%BD%91%E5%85%B3/SpringCloudGateway.png" alt="SpringCloudGateway"></p>
+<h2 id="协议类型"><a href="#协议类型" class="headerlink" title="协议类型"></a>协议类型</h2><table>
+<thead>
+<tr>
+<th>文本类</th>
+<th>二进制类</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>SOAP</td>
+<td>Hessian2</td>
+</tr>
+<tr>
+<td>RESTful</td>
+<td>Protocol Buffers</td>
+</tr>
+</tbody></table>
+<ul>
+<li>基于XML的SOAP协议（Simple Object Access Protocol）全称简单对象访问协议，设计是面向动作的，因而往往因为架构问题导致并发量上不去。</li>
+<li>基于JSON的RESTful协议（Representational State Transfer）表述性状态转移，是一种架构模式，主要面向资源，提供无状态服务，有利于横向扩展应对高并发。</li>
+<li>基于二进制的RPC协议Hessian2，不需要定义协议文件，是自描述的</li>
+<li>基于二进制的GRPC协议Protocol Buffers，需要写协议文件。网络传输使用 HTTP 2.0，服务治理可以使用基于 Envoy 的 Service Mesh。</li>
+</ul>
+<h2 id="微服务中的服务调用"><a href="#微服务中的服务调用" class="headerlink" title="微服务中的服务调用"></a>微服务中的服务调用</h2><p><img src="/2020/06/RPC%E8%BF%9C%E7%A8%8B%E8%B0%83%E7%94%A8/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84.jpg" alt="微服务架构"></p>
+<h3 id="Dubbo中的RPC调用"><a href="#Dubbo中的RPC调用" class="headerlink" title="Dubbo中的RPC调用"></a>Dubbo中的RPC调用</h3><p><img src="/2020/06/RPC%E8%BF%9C%E7%A8%8B%E8%B0%83%E7%94%A8/Dubbo%E8%B0%83%E7%94%A8%E6%96%B9%E5%BC%8F.jpg" alt="Dubbo调用方式"></p>
+<h3 id="SpringCloud中的OpenFeign调用"><a href="#SpringCloud中的OpenFeign调用" class="headerlink" title="SpringCloud中的OpenFeign调用"></a>SpringCloud中的OpenFeign调用</h3><p><img src="/2020/06/RPC%E8%BF%9C%E7%A8%8B%E8%B0%83%E7%94%A8/OpenFeign%E8%B0%83%E7%94%A8%E6%96%B9%E5%BC%8F.png" alt="OpenFeign调用方式"></p>
+<h3 id="二者对比"><a href="#二者对比" class="headerlink" title="二者对比"></a>二者对比</h3><p>Dubbo</p>
+<ul>
+<li>Dubbo中默认的RPC协议是Hessian2。为了保证传输的效率，Hessian2 将远程调用序列化为二进制进行传输，并且可以进行一定的压缩。</li>
+<li>Hessian2是自描述的，不需要再定义协议文件</li>
+<li>Dubbo使用Netty的网络传输框架，基于Socket实现高性能服务端</li>
+<li>还提供其他高性能序列化方式，例如Dubbox 从 Spark 那里借鉴 Kryo</li>
+</ul>
+<ul>
+<li>需要客户端和服务端共享jar，通过接口的方式相互依赖，强依赖关系，需要严格的版本控制，对程序无入侵</li>
+</ul>
+<p>OpenFeign</p>
+<ul>
+<li>消费端和提供端可以不用共享JAR，无接口依赖，定义好相关的json字段即可，对程序有一定入侵性</li>
+</ul>
+<ul>
+<li>程序与文本之间转换效率低，不适合内部大数据交换</li>
+<li>相比于二进制RPC，传输需要的带宽更大</li>
+</ul>
 
     </div>
 
@@ -256,7 +272,8 @@
       <footer class="post-footer">
           <div class="post-tags">
               <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" rel="tag"># 微服务</a>
-              <a href="/tags/%E7%BD%91%E5%85%B3/" rel="tag"># 网关</a>
+              <a href="/tags/RPC/" rel="tag"># RPC</a>
+              <a href="/tags/%E7%BD%91%E7%BB%9C/" rel="tag"># 网络</a>
           </div>
 
         
@@ -265,13 +282,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/06/01/%E8%81%8C%E4%B8%9A%E8%A7%84%E5%88%92/" rel="prev" title="职业规划">
-      <i class="fa fa-chevron-left"></i> 职业规划
+    <a href="/2020/06/API%E7%BD%91%E5%85%B3/" rel="prev" title="API网关">
+      <i class="fa fa-chevron-left"></i> API网关
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2020/06/10/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E8%BF%9C%E7%A8%8B%E8%B0%83%E7%94%A8/" rel="next" title="微服务远程调用">
-      微服务远程调用 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -330,7 +344,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#职能"><span class="nav-number">1.</span> <span class="nav-text">职能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分类"><span class="nav-number">2.</span> <span class="nav-text">分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#定位"><span class="nav-number">3.</span> <span class="nav-text">定位</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现"><span class="nav-number">4.</span> <span class="nav-text">实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Kong"><span class="nav-number">4.1.</span> <span class="nav-text">Kong</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Tyk"><span class="nav-number">4.2.</span> <span class="nav-text">Tyk</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Traefik"><span class="nav-number">4.3.</span> <span class="nav-text">Traefik</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Ambassador"><span class="nav-number">4.4.</span> <span class="nav-text">Ambassador</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Netflix-Zuul"><span class="nav-number">4.5.</span> <span class="nav-text">Netflix Zuul</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SpringCloud-Gateway"><span class="nav-number">4.6.</span> <span class="nav-text">SpringCloud Gateway</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#要解决的问题"><span class="nav-number">1.</span> <span class="nav-text">要解决的问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#协议类型"><span class="nav-number">2.</span> <span class="nav-text">协议类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#微服务中的服务调用"><span class="nav-number">3.</span> <span class="nav-text">微服务中的服务调用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Dubbo中的RPC调用"><span class="nav-number">3.1.</span> <span class="nav-text">Dubbo中的RPC调用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SpringCloud中的OpenFeign调用"><span class="nav-number">3.2.</span> <span class="nav-text">SpringCloud中的OpenFeign调用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二者对比"><span class="nav-number">3.3.</span> <span class="nav-text">二者对比</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -344,13 +358,13 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-count">2</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">1</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">

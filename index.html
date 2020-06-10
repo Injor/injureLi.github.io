@@ -144,7 +144,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/10/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E8%BF%9C%E7%A8%8B%E8%B0%83%E7%94%A8/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/RPC%E8%BF%9C%E7%A8%8B%E8%B0%83%E7%94%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -158,7 +158,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/06/10/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E8%BF%9C%E7%A8%8B%E8%B0%83%E7%94%A8/" class="post-title-link" itemprop="url">微服务远程调用</a>
+            <a href="/2020/06/RPC%E8%BF%9C%E7%A8%8B%E8%B0%83%E7%94%A8/" class="post-title-link" itemprop="url">RPC远程调用</a>
         </h2>
 
         <div class="post-meta">
@@ -169,7 +169,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2020-06-10 09:35:59 / Modified: 16:01:21" itemprop="dateCreated datePublished" datetime="2020-06-10T09:35:59+08:00">2020-06-10</time>
+              <time title="Created: 2020-06-10 09:35:59 / Modified: 17:41:21" itemprop="dateCreated datePublished" datetime="2020-06-10T09:35:59+08:00">2020-06-10</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -208,17 +208,48 @@
 </ul>
 </li>
 </ul>
-<h2 id="协议类型"><a href="#协议类型" class="headerlink" title="协议类型"></a>协议类型</h2><ul>
-<li>文本类<ul>
-<li>基于XML的SOAP协议（Simple Object Access Protocol）全称简单对象访问协议</li>
-<li>基于JSON的RESTful协议（Representational State Transfer）表述性状态转移</li>
+<h2 id="协议类型"><a href="#协议类型" class="headerlink" title="协议类型"></a>协议类型</h2><table>
+<thead>
+<tr>
+<th>文本类</th>
+<th>二进制类</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>SOAP</td>
+<td>Hessian2</td>
+</tr>
+<tr>
+<td>RESTful</td>
+<td>Protocol Buffers</td>
+</tr>
+</tbody></table>
+<ul>
+<li>基于XML的SOAP协议（Simple Object Access Protocol）全称简单对象访问协议，设计是面向动作的，因而往往因为架构问题导致并发量上不去。</li>
+<li>基于JSON的RESTful协议（Representational State Transfer）表述性状态转移，是一种架构模式，主要面向资源，提供无状态服务，有利于横向扩展应对高并发。</li>
+<li>基于二进制的RPC协议Hessian2，不需要定义协议文件，是自描述的</li>
+<li>基于二进制的GRPC协议Protocol Buffers，需要写协议文件。网络传输使用 HTTP 2.0，服务治理可以使用基于 Envoy 的 Service Mesh。</li>
 </ul>
-</li>
-<li>二进制类<ul>
-<li>Dubbo默认的RPC协议Hessian2</li>
-<li>跨语言GRPC中使用的序列化协议Protocol Buffers</li>
+<h2 id="微服务中的服务调用"><a href="#微服务中的服务调用" class="headerlink" title="微服务中的服务调用"></a>微服务中的服务调用</h2><p><img src="/2020/06/RPC%E8%BF%9C%E7%A8%8B%E8%B0%83%E7%94%A8/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84.jpg" alt="微服务架构"></p>
+<h3 id="Dubbo中的RPC调用"><a href="#Dubbo中的RPC调用" class="headerlink" title="Dubbo中的RPC调用"></a>Dubbo中的RPC调用</h3><p><img src="/2020/06/RPC%E8%BF%9C%E7%A8%8B%E8%B0%83%E7%94%A8/Dubbo%E8%B0%83%E7%94%A8%E6%96%B9%E5%BC%8F.jpg" alt="Dubbo调用方式"></p>
+<h3 id="SpringCloud中的OpenFeign调用"><a href="#SpringCloud中的OpenFeign调用" class="headerlink" title="SpringCloud中的OpenFeign调用"></a>SpringCloud中的OpenFeign调用</h3><p><img src="/2020/06/RPC%E8%BF%9C%E7%A8%8B%E8%B0%83%E7%94%A8/OpenFeign%E8%B0%83%E7%94%A8%E6%96%B9%E5%BC%8F.png" alt="OpenFeign调用方式"></p>
+<h3 id="二者对比"><a href="#二者对比" class="headerlink" title="二者对比"></a>二者对比</h3><p>Dubbo</p>
+<ul>
+<li>Dubbo中默认的RPC协议是Hessian2。为了保证传输的效率，Hessian2 将远程调用序列化为二进制进行传输，并且可以进行一定的压缩。</li>
+<li>Hessian2是自描述的，不需要再定义协议文件</li>
+<li>Dubbo使用Netty的网络传输框架，基于Socket实现高性能服务端</li>
+<li>还提供其他高性能序列化方式，例如Dubbox 从 Spark 那里借鉴 Kryo</li>
 </ul>
-</li>
+<ul>
+<li>需要客户端和服务端共享jar，通过接口的方式相互依赖，强依赖关系，需要严格的版本控制，对程序无入侵</li>
+</ul>
+<p>OpenFeign</p>
+<ul>
+<li>消费端和提供端可以不用共享JAR，无接口依赖，定义好相关的json字段即可，对程序有一定入侵性</li>
+</ul>
+<ul>
+<li>程序与文本之间转换效率低，不适合内部大数据交换</li>
+<li>相比于二进制RPC，传输需要的带宽更大</li>
 </ul>
 
       
@@ -239,7 +270,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/09/API%E7%BD%91%E5%85%B3/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/API%E7%BD%91%E5%85%B3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -253,7 +284,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/06/09/API%E7%BD%91%E5%85%B3/" class="post-title-link" itemprop="url">API网关</a>
+            <a href="/2020/06/API%E7%BD%91%E5%85%B3/" class="post-title-link" itemprop="url">API网关</a>
         </h2>
 
         <div class="post-meta">
@@ -347,84 +378,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/01/%E8%81%8C%E4%B8%9A%E8%A7%84%E5%88%92/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="injuryLi">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="injuryLi的学习笔记">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/06/01/%E8%81%8C%E4%B8%9A%E8%A7%84%E5%88%92/" class="post-title-link" itemprop="url">职业规划</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-06-01 21:24:12" itemprop="dateCreated datePublished" datetime="2020-06-01T21:24:12+08:00">2020-06-01</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-06-09 21:05:54" itemprop="dateModified" datetime="2020-06-09T21:05:54+08:00">2020-06-09</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/life/" itemprop="url" rel="index"><span itemprop="name">life</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="规划"><a href="#规划" class="headerlink" title="规划"></a>规划</h2><h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><p>算法工程师</p>
-<h3 id="学科"><a href="#学科" class="headerlink" title="学科"></a>学科</h3><p>数学、英语、计算机</p>
-<h3 id="学历"><a href="#学历" class="headerlink" title="学历"></a>学历</h3><p>考研</p>
-<h3 id="语言"><a href="#语言" class="headerlink" title="语言"></a>语言</h3><p>Java、Python</p>
-<h3 id="技能"><a href="#技能" class="headerlink" title="技能"></a>技能</h3><p>数据挖掘、算法</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
 
@@ -491,13 +444,13 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-count">2</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">1</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
