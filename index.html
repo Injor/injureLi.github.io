@@ -301,7 +301,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-06-10 17:44:58" itemprop="dateModified" datetime="2020-06-10T17:44:58+08:00">2020-06-10</time>
+                <time title="Modified: 2020-06-10 21:46:04" itemprop="dateModified" datetime="2020-06-10T21:46:04+08:00">2020-06-10</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -343,10 +343,10 @@
 <li>业务网关。针对某个业务的流控，下流多API聚合等</li>
 </ul>
 <h2 id="定位"><a href="#定位" class="headerlink" title="定位"></a>定位</h2><p>作为网关，最重要的是安全稳定，其次是降本增效，如何在保证安全稳定的前提下，以最快的速度帮助业务达成，这就是API网关的定位</p>
-<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><h3 id="Kong"><a href="#Kong" class="headerlink" title="Kong"></a>Kong</h3><blockquote>
+<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><h3 id="Kong"><a href="#Kong" class="headerlink" title="Kong"></a><a href="https://github.com/Kong/kong" target="_blank" rel="noopener">Kong</a></h3><blockquote>
 <p>Kong是一个在Nginx运行的Lua应用程序，由lua-nginx-module实现。Kong和OpenResty一起打包发行，其中已经包含了lua-nginx-module。OpenResty不是Nginx的分支，而是一组扩展其功能的模块。</p>
 </blockquote>
-<h3 id="Tyk"><a href="#Tyk" class="headerlink" title="Tyk"></a>Tyk</h3><blockquote>
+<h3 id="Tyk"><a href="#Tyk" class="headerlink" title="Tyk"></a><a href="https://github.com/TykTechnologies/tyk" target="_blank" rel="noopener">Tyk</a></h3><blockquote>
 <p>Tyk是一个开源的、轻量级的、快速可伸缩的 API网关，支持配额和速度限制，支持认证和数据分析，支持多用户多组织，提供全 RESTful API。基于 go 编写。</p>
 </blockquote>
 <h3 id="Traefik"><a href="#Traefik" class="headerlink" title="Traefik"></a>Traefik</h3><blockquote>
@@ -355,14 +355,54 @@
 <h3 id="Ambassador"><a href="#Ambassador" class="headerlink" title="Ambassador"></a>Ambassador</h3><blockquote>
 <p>Ambassador 是一个开源的微服务 API 网关，建立在 Envoy 代理之上，为用户的多个团队快速发布，监控和更新提供支持，支持处理 Kubernetes ingress controller 和负载均衡等功能，可以与 Istio 无缝集成。</p>
 </blockquote>
-<h3 id="Netflix-Zuul"><a href="#Netflix-Zuul" class="headerlink" title="Netflix Zuul"></a>Netflix Zuul</h3><blockquote>
-<p>Zuul 是一种提供动态路由、监视、弹性、安全性等功能的边缘服务。Zuul 是 Netflix 出品的一个基于 JVM 路由和服务端的负载均衡器。</p>
+<h3 id="Netflix-Zuul"><a href="#Netflix-Zuul" class="headerlink" title="Netflix Zuul"></a><a href="https://github.com/Netflix/zuul" target="_blank" rel="noopener">Netflix Zuul</a></h3><p>Zuul是一种提供动态路由、监视、弹性、安全性等功能的边缘服务，是 Netflix 出品的一个基于JVM 路由和服务端的负载均衡器。</p>
+<blockquote>
+<p>Zuul is an L7 application gateway that provides capabilities for dynamic routing, monitoring, resiliency, security, and more.</p>
 </blockquote>
-<p><img src="/2020/06/API%E7%BD%91%E5%85%B3/Zuul%E7%BD%91%E5%85%B3%E6%9E%B6%E6%9E%84.png" alt="Zuul网关架构"></p>
-<h3 id="SpringCloud-Gateway"><a href="#SpringCloud-Gateway" class="headerlink" title="SpringCloud Gateway"></a>SpringCloud Gateway</h3><blockquote>
+<h4 id="架构"><a href="#架构" class="headerlink" title="架构"></a>架构</h4><p><img src="/2020/06/API%E7%BD%91%E5%85%B3/Zuul%E7%BD%91%E5%85%B3%E6%9E%B6%E6%9E%84.png" alt="Zuul网关架构"></p>
+<p>主要分为三个模块，Filter管理、Filter加载、Filter运行时模块</p>
+<ul>
+<li>类型Type（pre、route、post、error）</li>
+<li>执行顺序Order</li>
+<li>条件Criteria</li>
+<li>动作Action</li>
+</ul>
+<h4 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h4><p><img src="/2020/06/API%E7%BD%91%E5%85%B3/Zuul%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.jpeg" alt="Zuul生命周期"></p>
+<h4 id="网关优化"><a href="#网关优化" class="headerlink" title="网关优化"></a>网关优化</h4><ul>
+<li>AsyncServlet优化连接数</li>
+<li>Hystrix熔断限流（信号量隔离）</li>
+<li>连接池管理，设置上线</li>
+<li>CAT和Hystrix监控</li>
+</ul>
+<h4 id="Zuul2-0"><a href="#Zuul2-0" class="headerlink" title="Zuul2.0"></a>Zuul2.0</h4><p>Zuul 1是阻塞多线程模式，适用于计算密集型场景</p>
+<ul>
+<li>编程模型简单、开发调试运维简单、容易监控迈点、十亿级OK</li>
+</ul>
+<ul>
+<li>线程上下文切换开销、连接数限制、延迟阻塞耗尽线程连接资源</li>
+</ul>
+<p>Zuul 2是非阻塞异步模式,适用于IO密集型场景</p>
+<ul>
+<li>线程开销少、连接数易扩展、可支撑百/千亿级的量</li>
+</ul>
+<ul>
+<li>线程模型复杂，开发调试运维复杂、ThreadLocal不work</li>
+</ul>
+<h4 id="SpringCloud-Zuul"><a href="#SpringCloud-Zuul" class="headerlink" title="SpringCloud Zuul"></a>SpringCloud Zuul</h4><ul>
+<li>去掉了一些生产级特性，如动态过滤器加载，小规模项目可以使用</li>
+<li>注重开发者的体验</li>
+<li>启动时批量加载Filter</li>
+</ul>
+<h3 id="SpringCloud-Gateway"><a href="#SpringCloud-Gateway" class="headerlink" title="SpringCloud Gateway"></a><a href="https://github.com/spring-cloud/spring-cloud-gateway" target="_blank" rel="noopener">SpringCloud Gateway</a></h3><blockquote>
 <p>Gateway is built on Spring Framework 5, Project Reactor and Spring Boot 2 using non-blocking APIs. Websockets are supported and it’s a much better developer experience since it’s tightly integrated with Spring.</p>
 </blockquote>
 <p><img src="/2020/06/API%E7%BD%91%E5%85%B3/SpringCloudGateway.png" alt="SpringCloudGateway"></p>
+<ul>
+<li>客户端向 Spring Cloud Gateway 发出请求。</li>
+<li>然后在 Gateway Handler Mapping 中找到与请求相匹配的路由，将其发送到 Gateway Web Handler。</li>
+<li>Handler再通过指定的过滤器链来将请求发送到我们实际的服务执行业务逻辑，然后返回。</li>
+<li>过滤器之间用虚线分开是因为过滤器可能会在发送代理请求之前（“pre”）或之后（“post”）执行业务逻辑。</li>
+</ul>
 
       
     </div>
