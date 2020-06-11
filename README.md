@@ -5,7 +5,9 @@
 ### 安装nodejs
 略
 ### 安装Hexo
-```sudo npm install hexo-cli -g```
+``` bash
+sudo npm install hexo-cli -g
+```
 ## 编写发布
 ### 初始化指定文件目录
 ```hexo init blog```
@@ -24,6 +26,7 @@ deploy:
 ```
 ### 测试
 ```hexo s```
+
 ### 发布
 ``` bash
 npm install hexo-deployer-git  --save
@@ -37,4 +40,10 @@ hexo new "My New Post"
 ### 新建标签
 ``` bash
 hexo new page "tags"
+```
+### 插入图片
+``` bash
+npm install https://github.com/xcodebuild/hexo-asset-image --save
+# _config.yml
+post_asset_folder: true
 ```
