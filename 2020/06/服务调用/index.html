@@ -20,23 +20,23 @@
     var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="推荐阅读  the microservice architectural style is an approach to developing a single application as a suite of small services, each running in its own process and communicating with lightweight mechanisms">
+  <meta name="description" content="要解决的问题 协议约定问题 如何规定远程调用的语法？ 参数如何传递，什么时候是头，什么时候是尾？ 如何表示数据？   传输协议问题 发生错误、重传、丢包、性能问题怎么办？   服务发现问题 一个服务实现了哪些远程调用，从哪个端口可以访问？    协议类型   文本类 二进制类    SOAP Hessian2   RESTful Protocol Buffers    基于XML的SOAP协议（S">
 <meta property="og:type" content="article">
-<meta property="og:title" content="微服务架构">
-<meta property="og:url" content="http://yoursite.com/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84/index.html">
+<meta property="og:title" content="RPC远程调用">
+<meta property="og:url" content="http://yoursite.com/2020/06/%E6%9C%8D%E5%8A%A1%E8%B0%83%E7%94%A8/index.html">
 <meta property="og:site_name" content="injureLi的学习笔记">
-<meta property="og:description" content="推荐阅读  the microservice architectural style is an approach to developing a single application as a suite of small services, each running in its own process and communicating with lightweight mechanisms">
-<meta property="og:image" content="http://yoursite.com/images/%E6%9C%8D%E5%8A%A1%E5%88%92%E5%88%86.png">
-<meta property="og:image" content="http://yoursite.com/images/%E7%8B%AC%E7%AB%8B%E9%83%A8%E7%BD%B2.png">
-<meta property="og:image" content="http://yoursite.com/images/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E8%87%AA%E5%8A%A8%E5%8C%96.png">
-<meta property="og:image" content="http://yoursite.com/images/%E5%88%86%E6%95%A3%E6%95%B0%E6%8D%AE%E7%AE%A1%E7%90%86.png">
-<meta property="article:published_time" content="2020-06-08T10:30:48.000Z">
-<meta property="article:modified_time" content="2020-06-30T05:26:23.552Z">
+<meta property="og:description" content="要解决的问题 协议约定问题 如何规定远程调用的语法？ 参数如何传递，什么时候是头，什么时候是尾？ 如何表示数据？   传输协议问题 发生错误、重传、丢包、性能问题怎么办？   服务发现问题 一个服务实现了哪些远程调用，从哪个端口可以访问？    协议类型   文本类 二进制类    SOAP Hessian2   RESTful Protocol Buffers    基于XML的SOAP协议（S">
+<meta property="og:image" content="http://yoursite.com/images/Dubbo%E8%B0%83%E7%94%A8%E6%96%B9%E5%BC%8F.jpg">
+<meta property="og:image" content="http://yoursite.com/images/OpenFeign%E8%B0%83%E7%94%A8%E6%96%B9%E5%BC%8F.png">
+<meta property="article:published_time" content="2020-06-10T01:35:59.000Z">
+<meta property="article:modified_time" content="2020-06-30T05:26:42.523Z">
 <meta property="article:author" content="injureLi">
+<meta property="article:tag" content="RPC">
+<meta property="article:tag" content="网络">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/images/%E6%9C%8D%E5%8A%A1%E5%88%92%E5%88%86.png">
+<meta name="twitter:image" content="http://yoursite.com/images/Dubbo%E8%B0%83%E7%94%A8%E6%96%B9%E5%BC%8F.jpg">
 
-<link rel="canonical" href="http://yoursite.com/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84/">
+<link rel="canonical" href="http://yoursite.com/2020/06/%E6%9C%8D%E5%8A%A1%E8%B0%83%E7%94%A8/">
 
 
 <script id="page-configurations">
@@ -49,7 +49,7 @@
   };
 </script>
 
-  <title>微服务架构 | injureLi的学习笔记</title>
+  <title>RPC远程调用 | injureLi的学习笔记</title>
   
 
 
@@ -159,7 +159,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/%E6%9C%8D%E5%8A%A1%E8%B0%83%E7%94%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -172,7 +172,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          微服务架构
+          RPC远程调用
         </h1>
 
         <div class="post-meta">
@@ -182,14 +182,14 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2020-06-08 18:30:48" itemprop="dateCreated datePublished" datetime="2020-06-08T18:30:48+08:00">2020-06-08</time>
+              <time title="Created: 2020-06-10 09:35:59" itemprop="dateCreated datePublished" datetime="2020-06-10T09:35:59+08:00">2020-06-10</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-06-30 13:26:23" itemprop="dateModified" datetime="2020-06-30T13:26:23+08:00">2020-06-30</time>
+                <time title="Modified: 2020-06-30 13:26:42" itemprop="dateModified" datetime="2020-06-30T13:26:42+08:00">2020-06-30</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -219,51 +219,63 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p><a href="https://www.martinfowler.com/articles/microservices.html" target="_blank" rel="noopener">推荐阅读</a></p>
-<blockquote>
-<p>the microservice architectural style is an approach to developing a single application as a suite of small services, each running in its own process and communicating with lightweight mechanisms, often an HTTP resource API.</p>
-</blockquote>
-<blockquote>
-<p>These services are built around business capabilities and independently deployable by fully automated deployment machinery. There is a bare minimum of centralized management of these services, which may be written in different programming languages and use different data storage technologies.</p>
-</blockquote>
-<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><ul>
-<li><p>一种架构风格，将单体应用划分成一组⼩小的服务，服务之间相互协作，实现业务功能<br><img src="/images/%E6%9C%8D%E5%8A%A1%E5%88%92%E5%88%86.png" alt=""></p>
+        <h2 id="要解决的问题"><a href="#要解决的问题" class="headerlink" title="要解决的问题"></a>要解决的问题</h2><ul>
+<li>协议约定问题<ul>
+<li>如何规定远程调用的语法？</li>
+<li>参数如何传递，什么时候是头，什么时候是尾？</li>
+<li>如何表示数据？</li>
+</ul>
 </li>
-<li><p>每个服务运⾏在独立的进程中，服务间采用轻量级的通信机制协作(通常是HTTP/ JSON)<br><img src="/images/%E7%8B%AC%E7%AB%8B%E9%83%A8%E7%BD%B2.png" alt=""></p>
+<li>传输协议问题<ul>
+<li>发生错误、重传、丢包、性能问题怎么办？</li>
+</ul>
 </li>
-<li><p>每个服务围绕业务能力进行构建，并且能够通过自动化机制独立地部署<br><img src="/images/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E8%87%AA%E5%8A%A8%E5%8C%96.png" alt=""></p>
-</li>
-<li><p>很少有集中式的服务管理，每个服务可以使用不同的语言开发，使⽤不同的存储技术<br><img src="/images/%E5%88%86%E6%95%A3%E6%95%B0%E6%8D%AE%E7%AE%A1%E7%90%86.png" alt=""></p>
-</li>
-<li><p>基于有界上下文的，松散耦合的面向服务的架构</p>
+<li>服务发现问题<ul>
+<li>一个服务实现了哪些远程调用，从哪个端口可以访问？</li>
+</ul>
 </li>
 </ul>
-<h2 id="微服务的权衡"><a href="#微服务的权衡" class="headerlink" title="微服务的权衡"></a>微服务的权衡</h2><h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ul>
-<li>强大的模块边界：微服务加强了模块化结构，这对于大型团队而言尤其重要。</li>
-<li>独立部署：简单服务更易于部署，并且由于它们是自治的，因此出错时不太可能导致系统故障。</li>
-<li>技术多样性：使用微服务，您可以混合使用多种语言，开发框架和数据存储技术。</li>
+<h2 id="协议类型"><a href="#协议类型" class="headerlink" title="协议类型"></a>协议类型</h2><table>
+<thead>
+<tr>
+<th>文本类</th>
+<th>二进制类</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>SOAP</td>
+<td>Hessian2</td>
+</tr>
+<tr>
+<td>RESTful</td>
+<td>Protocol Buffers</td>
+</tr>
+</tbody></table>
+<ul>
+<li>基于XML的SOAP协议（Simple Object Access Protocol）全称简单对象访问协议，设计是面向动作的，因而往往因为架构问题导致并发量上不去。</li>
+<li>基于JSON的RESTful协议（Representational State Transfer）表述性状态转移，是一种架构模式，主要面向资源，提供无状态服务，有利于横向扩展应对高并发。</li>
+<li>基于二进制的RPC协议Hessian2，不需要定义协议文件，是自描述的</li>
+<li>基于二进制的GRPC协议Protocol Buffers，需要写协议文件。网络传输使用 HTTP 2.0，服务治理可以使用基于 Envoy 的 Service Mesh。</li>
 </ul>
-<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><ul>
-<li>分发：分布式系统更难编程，因为远程调用速度很慢并且总是有失败的风险。</li>
-<li>最终一致性：对于分布式系统而言，保持强一致性非常困难，这意味着每个人都必须管理最终一致性。</li>
-<li>运营复杂性：您需要一个成熟的运营团队来管理大量定期重新部署的服务。</li>
+<h3 id="Dubbo中的RPC调用"><a href="#Dubbo中的RPC调用" class="headerlink" title="Dubbo中的RPC调用"></a>Dubbo中的RPC调用</h3><p><img src="/images/Dubbo%E8%B0%83%E7%94%A8%E6%96%B9%E5%BC%8F.jpg" alt=""></p>
+<h3 id="SpringCloud中的OpenFeign调用"><a href="#SpringCloud中的OpenFeign调用" class="headerlink" title="SpringCloud中的OpenFeign调用"></a>SpringCloud中的OpenFeign调用</h3><p><img src="/images/OpenFeign%E8%B0%83%E7%94%A8%E6%96%B9%E5%BC%8F.png" alt=""></p>
+<h3 id="二者对比"><a href="#二者对比" class="headerlink" title="二者对比"></a>二者对比</h3><p>Dubbo</p>
+<ul>
+<li>Dubbo中默认的RPC协议是Hessian2。为了保证传输的效率，Hessian2 将远程调用序列化为二进制进行传输，并且可以进行一定的压缩。</li>
+<li>Hessian2是自描述的，不需要再定义协议文件</li>
+<li>Dubbo使用Netty的网络传输框架，基于Socket实现高性能服务端</li>
+<li>还提供其他高性能序列化方式，例如Dubbox 从 Spark 那里借鉴 Kryo</li>
 </ul>
-<h2 id="微服务设计要素"><a href="#微服务设计要素" class="headerlink" title="微服务设计要素"></a>微服务设计要素</h2><h3 id="服务fail设计"><a href="#服务fail设计" class="headerlink" title="服务fail设计"></a>服务fail设计</h3><ul>
-<li>对应用程序进行设计，以便它们可以容忍服务故障，若目标服务不可用，必须尽可能优雅地做出响应</li>
-<li>由于服务随时可能发生故障，微服务要注重应用程序的实时监控，检查架构元素（数据库每秒收到多少请求）和业务相关指标（例如每分钟收到多少订单）</li>
-<li>可以看到每个服务的复杂监视和日志记录设置，例如显示上/下状态的仪表板以及各种与业务和业务相关的指标。断路器状态，当前吞吐量和等待时间的详细信息。</li>
+<ul>
+<li>需要客户端和服务端共享jar，通过接口的方式相互依赖，强依赖关系，需要严格的版本控制，对程序无入侵</li>
 </ul>
-<h3 id="服务优化设计"><a href="#服务优化设计" class="headerlink" title="服务优化设计"></a>服务优化设计</h3><ul>
-<li>我们经常需要对服务进行优化，将服务分解作为进一步的工具，使用正确的态度和工具，可以频繁、快速</li>
-<li>组件的关键特性是独立替换和可升级性的概念，将应用程序分解为组件、重写组件时需要设想是否不影响其他collaborators</li>
-<li>实际上许多微服务的规划是短暂（会被废弃）而不是长久的</li>
-<li>如果两个服务经常需要一起进行修改，说明说它们应该被合并</li>
-<li>微服务部署时一项服务的更改会对其他服务造成影响，传统的集成方法是通过版本进行控制，微服务的首选仅是把<a href="https://www.martinfowler.com/articles/enterpriseREST.html#versioning" target="_blank" rel="noopener">版本控制作为最后手段</a></li>
+<p>OpenFeign</p>
+<ul>
+<li>消费端和提供端可以不用共享JAR，无接口依赖，定义好相关的json字段即可，对程序有一定入侵性</li>
 </ul>
-<h3 id="思考？"><a href="#思考？" class="headerlink" title="思考？"></a>思考？</h3><ul>
-<li>很难弄清楚组件的边界应该在哪里</li>
-<li>如果组件组成不清晰，那我们需要将复杂性从组件内部转移到组件之间的连接</li>
-<li>从整体开始，使其保持模块化，并在整体出现问题后将其拆分为微服务</li>
+<ul>
+<li>程序与文本之间转换效率低，不适合内部大数据交换</li>
+<li>相比于二进制RPC，传输需要的带宽更大</li>
 </ul>
 
     </div>
@@ -273,16 +285,23 @@
     
 
       <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/RPC/" rel="tag"># RPC</a>
+              <a href="/tags/%E7%BD%91%E7%BB%9C/" rel="tag"># 网络</a>
+          </div>
 
         
 
 
         
     <div class="post-nav">
-      <div class="post-nav-item"></div>
       <div class="post-nav-item">
-    <a href="/API%E7%BD%91%E5%85%B3/" rel="next" title="API网关">
-      API网关 <i class="fa fa-chevron-right"></i>
+    <a href="/2020/06/API%E7%BD%91%E5%85%B3/" rel="prev" title="API网关">
+      <i class="fa fa-chevron-left"></i> API网关
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/06/%E6%9C%8D%E5%8A%A1%E5%8F%91%E7%8E%B0/" rel="next" title="服务发现">
+      服务发现 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -342,7 +361,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义"><span class="nav-number">1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#微服务的权衡"><span class="nav-number">2.</span> <span class="nav-text">微服务的权衡</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#优点"><span class="nav-number">2.1.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#缺点"><span class="nav-number">2.2.</span> <span class="nav-text">缺点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#微服务设计要素"><span class="nav-number">3.</span> <span class="nav-text">微服务设计要素</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#服务fail设计"><span class="nav-number">3.1.</span> <span class="nav-text">服务fail设计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#服务优化设计"><span class="nav-number">3.2.</span> <span class="nav-text">服务优化设计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思考？"><span class="nav-number">3.3.</span> <span class="nav-text">思考？</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#要解决的问题"><span class="nav-number">1.</span> <span class="nav-text">要解决的问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#协议类型"><span class="nav-number">2.</span> <span class="nav-text">协议类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Dubbo中的RPC调用"><span class="nav-number">2.1.</span> <span class="nav-text">Dubbo中的RPC调用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SpringCloud中的OpenFeign调用"><span class="nav-number">2.2.</span> <span class="nav-text">SpringCloud中的OpenFeign调用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二者对比"><span class="nav-number">2.3.</span> <span class="nav-text">二者对比</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -375,9 +394,6 @@
   <div class="links-of-author motion-element">
       <span class="links-of-author-item">
         <a href="https://github.com/injureLi" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;injureLi" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
-      </span>
-      <span class="links-of-author-item">
-        <a href="/injure.li.cn@gmail.com" title="E-Mail → injure.li.cn@gmail.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
       </span>
   </div>
 
