@@ -23,21 +23,20 @@
   <meta name="description" content="职能 请求接入 业务聚合 下游服务注册及管理 API聚合与数据编排，针对API的定制化、复用   中介策略。实现鉴权、反爬、路由、分流、流控、降级等策略 基础安全保障，侧重应用层安保能力建设 流量治理，侧重于流量隔离与调度   统一管理。提供配置管理平台，对所有API服务的调用生命周期和中介策略进行统一管理  分类 流量网关。与后端业务无关，侧重于全局流量的安全与稳定 业务网关。针对某个业务的流控">
 <meta property="og:type" content="article">
 <meta property="og:title" content="API网关">
-<meta property="og:url" content="http://yoursite.com/2020/06/API%E7%BD%91%E5%85%B3/index.html">
+<meta property="og:url" content="http://yoursite.com/API%E7%BD%91%E5%85%B3/index.html">
 <meta property="og:site_name" content="injureLi的学习笔记">
 <meta property="og:description" content="职能 请求接入 业务聚合 下游服务注册及管理 API聚合与数据编排，针对API的定制化、复用   中介策略。实现鉴权、反爬、路由、分流、流控、降级等策略 基础安全保障，侧重应用层安保能力建设 流量治理，侧重于流量隔离与调度   统一管理。提供配置管理平台，对所有API服务的调用生命周期和中介策略进行统一管理  分类 流量网关。与后端业务无关，侧重于全局流量的安全与稳定 业务网关。针对某个业务的流控">
-<meta property="og:image" content="http://yoursite.com/2020/06/API%E7%BD%91%E5%85%B3/Zuul%E7%BD%91%E5%85%B3%E6%9E%B6%E6%9E%84.png">
-<meta property="og:image" content="http://yoursite.com/2020/06/API%E7%BD%91%E5%85%B3/Zuul%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.jpeg">
-<meta property="og:image" content="http://yoursite.com/2020/06/API%E7%BD%91%E5%85%B3/SpringCloudGateway.png">
+<meta property="og:image" content="http://yoursite.com/images/Zuul%E7%BD%91%E5%85%B3%E6%9E%B6%E6%9E%84.png">
+<meta property="og:image" content="http://yoursite.com/images/Zuul%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.png">
+<meta property="og:image" content="http://yoursite.com/images/SpringCloudGateway.png">
 <meta property="article:published_time" content="2020-06-09T13:04:57.000Z">
-<meta property="article:modified_time" content="2020-06-10T13:46:04.986Z">
+<meta property="article:modified_time" content="2020-06-30T05:25:54.770Z">
 <meta property="article:author" content="injureLi">
-<meta property="article:tag" content="微服务">
 <meta property="article:tag" content="网关">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/2020/06/API%E7%BD%91%E5%85%B3/Zuul%E7%BD%91%E5%85%B3%E6%9E%B6%E6%9E%84.png">
+<meta name="twitter:image" content="http://yoursite.com/images/Zuul%E7%BD%91%E5%85%B3%E6%9E%B6%E6%9E%84.png">
 
-<link rel="canonical" href="http://yoursite.com/2020/06/API%E7%BD%91%E5%85%B3/">
+<link rel="canonical" href="http://yoursite.com/API%E7%BD%91%E5%85%B3/">
 
 
 <script id="page-configurations">
@@ -122,6 +121,11 @@
     <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
 
   </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
         <li class="menu-item menu-item-archives">
 
     <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
@@ -155,7 +159,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/API%E7%BD%91%E5%85%B3/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/API%E7%BD%91%E5%85%B3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -185,7 +189,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-06-10 21:46:04" itemprop="dateModified" datetime="2020-06-10T21:46:04+08:00">2020-06-10</time>
+                <time title="Modified: 2020-06-30 13:25:54" itemprop="dateModified" datetime="2020-06-30T13:25:54+08:00">2020-06-30</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -193,11 +197,18 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+                  <a href="/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" itemprop="url" rel="index"><span itemprop="name">微服务</span></a>
                 </span>
             </span>
 
           
+            <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
 
         </div>
       </header>
@@ -243,7 +254,7 @@
 <blockquote>
 <p>Zuul is an L7 application gateway that provides capabilities for dynamic routing, monitoring, resiliency, security, and more.</p>
 </blockquote>
-<h4 id="架构"><a href="#架构" class="headerlink" title="架构"></a>架构</h4><p><img src="/2020/06/API%E7%BD%91%E5%85%B3/Zuul%E7%BD%91%E5%85%B3%E6%9E%B6%E6%9E%84.png" alt="Zuul网关架构"></p>
+<h4 id="架构"><a href="#架构" class="headerlink" title="架构"></a>架构</h4><p><img src="/images/Zuul%E7%BD%91%E5%85%B3%E6%9E%B6%E6%9E%84.png" alt=""></p>
 <p>主要分为三个模块，Filter管理、Filter加载、Filter运行时模块</p>
 <ul>
 <li>类型Type（pre、route、post、error）</li>
@@ -251,7 +262,7 @@
 <li>条件Criteria</li>
 <li>动作Action</li>
 </ul>
-<h4 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h4><p><img src="/2020/06/API%E7%BD%91%E5%85%B3/Zuul%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.jpeg" alt="Zuul生命周期"></p>
+<h4 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h4><p><img src="/images/Zuul%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.png" alt=""></p>
 <h4 id="网关优化"><a href="#网关优化" class="headerlink" title="网关优化"></a>网关优化</h4><ul>
 <li>AsyncServlet优化连接数</li>
 <li>Hystrix熔断限流（信号量隔离）</li>
@@ -280,7 +291,7 @@
 <h3 id="SpringCloud-Gateway"><a href="#SpringCloud-Gateway" class="headerlink" title="SpringCloud Gateway"></a><a href="https://github.com/spring-cloud/spring-cloud-gateway" target="_blank" rel="noopener">SpringCloud Gateway</a></h3><blockquote>
 <p>Gateway is built on Spring Framework 5, Project Reactor and Spring Boot 2 using non-blocking APIs. Websockets are supported and it’s a much better developer experience since it’s tightly integrated with Spring.</p>
 </blockquote>
-<p><img src="/2020/06/API%E7%BD%91%E5%85%B3/SpringCloudGateway.png" alt="SpringCloudGateway"></p>
+<p><img src="/images/SpringCloudGateway.png" alt=""></p>
 <ul>
 <li>客户端向 Spring Cloud Gateway 发出请求。</li>
 <li>然后在 Gateway Handler Mapping 中找到与请求相匹配的路由，将其发送到 Gateway Web Handler。</li>
@@ -296,7 +307,6 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" rel="tag"># 微服务</a>
               <a href="/tags/%E7%BD%91%E5%85%B3/" rel="tag"># 网关</a>
           </div>
 
@@ -305,9 +315,12 @@
 
         
     <div class="post-nav">
-      <div class="post-nav-item"></div>
       <div class="post-nav-item">
-    <a href="/2020/06/RPC%E8%BF%9C%E7%A8%8B%E8%B0%83%E7%94%A8/" rel="next" title="RPC远程调用">
+    <a href="/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84/" rel="prev" title="微服务架构">
+      <i class="fa fa-chevron-left"></i> 微服务架构
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/%E6%9C%8D%E5%8A%A1%E8%B0%83%E7%94%A8/" rel="next" title="RPC远程调用">
       RPC远程调用 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
@@ -382,7 +395,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-count">4</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -393,11 +406,19 @@
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
 </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/injureLi" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;injureLi" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/injure.li.cn@gmail.com" title="E-Mail → injure.li.cn@gmail.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
 
 
 
@@ -430,6 +451,26 @@
   </div>
 
         
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
 
 
 

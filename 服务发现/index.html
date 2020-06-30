@@ -20,29 +20,31 @@
     var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="服务发现服务发现有三个角色，服务提供者、服务消费者和服务中介，消费者调用 REST API 或者 Thrift API 的服务，需要知道服务实例的网络位置（IP和端口）  代理模式关于服务发现和负载均衡，业界探索和总结出一些常用的模式，这些模式的核心是代理，以及代理在架构中所处的位置。 集中式代理硬件负载均衡器F5和软件负载均衡器Nginx，在DNS域名服务器配合下实现服务发现，建立服务域名和IP">
+  <meta name="description" content="服务发现服务发现有三个角色，服务提供者、服务消费者和服务中介，消费者调用 REST API 或者 Thrift API 的服务，需要知道服务实例的网络位置（IP和端口）  代理模式关于服务发现和负载均衡，业界探索和总结出一些常用的模式，这些模式的核心是代理，以及代理在架构中所处的位置。 集中式代理 硬件负载均衡器F5和软件负载均衡器Nginx，在DNS域名服务器配合下实现服务发现，建立服务域名和I">
 <meta property="og:type" content="article">
 <meta property="og:title" content="服务发现">
-<meta property="og:url" content="http://yoursite.com/2020/06/%E6%9C%8D%E5%8A%A1%E5%8F%91%E7%8E%B0/index.html">
+<meta property="og:url" content="http://yoursite.com/%E6%9C%8D%E5%8A%A1%E5%8F%91%E7%8E%B0/index.html">
 <meta property="og:site_name" content="injureLi的学习笔记">
-<meta property="og:description" content="服务发现服务发现有三个角色，服务提供者、服务消费者和服务中介，消费者调用 REST API 或者 Thrift API 的服务，需要知道服务实例的网络位置（IP和端口）  代理模式关于服务发现和负载均衡，业界探索和总结出一些常用的模式，这些模式的核心是代理，以及代理在架构中所处的位置。 集中式代理硬件负载均衡器F5和软件负载均衡器Nginx，在DNS域名服务器配合下实现服务发现，建立服务域名和IP">
-<meta property="og:image" content="http://yoursite.com/2020/06/%E6%9C%8D%E5%8A%A1%E5%8F%91%E7%8E%B0/%E6%9C%8D%E5%8A%A1%E5%8F%91%E7%8E%B0.png">
-<meta property="og:image" content="http://yoursite.com/2020/06/%E6%9C%8D%E5%8A%A1%E5%8F%91%E7%8E%B0/Eureka.png">
-<meta property="og:image" content="http://yoursite.com/2020/06/%E6%9C%8D%E5%8A%A1%E5%8F%91%E7%8E%B0/Eureka%E6%B3%A8%E5%86%8C.png">
-<meta property="og:image" content="http://yoursite.com/2020/06/%E6%9C%8D%E5%8A%A1%E5%8F%91%E7%8E%B0/Eureka%E7%BB%AD%E7%BA%A6.jpg">
-<meta property="og:image" content="http://yoursite.com/2020/06/%E6%9C%8D%E5%8A%A1%E5%8F%91%E7%8E%B0/Eureka%E4%B8%8B%E7%BA%BF.jpg">
-<meta property="og:image" content="http://yoursite.com/2020/06/%E6%9C%8D%E5%8A%A1%E5%8F%91%E7%8E%B0/Eureka%E8%8E%B7%E5%8F%96%E6%9C%8D%E5%8A%A1.png">
-<meta property="og:image" content="http://yoursite.com/2020/06/%E6%9C%8D%E5%8A%A1%E5%8F%91%E7%8E%B0/Eureka%E5%89%94%E9%99%A4.png">
-<meta property="og:image" content="http://yoursite.com/2020/06/%E6%9C%8D%E5%8A%A1%E5%8F%91%E7%8E%B0/Nacos%E6%9E%B6%E6%9E%84.png">
-<meta property="og:image" content="http://yoursite.com/2020/06/%E6%9C%8D%E5%8A%A1%E5%8F%91%E7%8E%B0/Istio%E6%9E%B6%E6%9E%84.png">
+<meta property="og:description" content="服务发现服务发现有三个角色，服务提供者、服务消费者和服务中介，消费者调用 REST API 或者 Thrift API 的服务，需要知道服务实例的网络位置（IP和端口）  代理模式关于服务发现和负载均衡，业界探索和总结出一些常用的模式，这些模式的核心是代理，以及代理在架构中所处的位置。 集中式代理 硬件负载均衡器F5和软件负载均衡器Nginx，在DNS域名服务器配合下实现服务发现，建立服务域名和I">
+<meta property="og:image" content="http://yoursite.com/images/%E6%9C%8D%E5%8A%A1%E5%8F%91%E7%8E%B0.png">
+<meta property="og:image" content="http://yoursite.com/images/%E7%8B%AC%E7%AB%8BLB.png">
+<meta property="og:image" content="http://yoursite.com/images/%E8%BF%9B%E7%A8%8B%E5%86%85LB.png">
+<meta property="og:image" content="http://yoursite.com/images/%E4%B8%BB%E6%9C%BA%E7%8B%AC%E7%AB%8B%E8%BF%9B%E7%A8%8BLB.png">
+<meta property="og:image" content="http://yoursite.com/images/Eureka.png">
+<meta property="og:image" content="http://yoursite.com/images/Eureka%E6%B3%A8%E5%86%8C.png">
+<meta property="og:image" content="http://yoursite.com/images/Eureka%E7%BB%AD%E7%BA%A6.jpg">
+<meta property="og:image" content="http://yoursite.com/images/Eureka%E4%B8%8B%E7%BA%BF.jpg">
+<meta property="og:image" content="http://yoursite.com/images/Eureka%E8%8E%B7%E5%8F%96%E6%9C%8D%E5%8A%A1.png">
+<meta property="og:image" content="http://yoursite.com/images/Eureka%E5%89%94%E9%99%A4.png">
+<meta property="og:image" content="http://yoursite.com/images/Nacos%E6%9E%B6%E6%9E%84.png">
+<meta property="og:image" content="http://yoursite.com/images/Istio%E6%9E%B6%E6%9E%84.png">
 <meta property="article:published_time" content="2020-06-11T12:05:13.000Z">
-<meta property="article:modified_time" content="2020-06-11T15:40:31.202Z">
+<meta property="article:modified_time" content="2020-06-30T05:28:52.204Z">
 <meta property="article:author" content="injureLi">
-<meta property="article:tag" content="微服务">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/2020/06/%E6%9C%8D%E5%8A%A1%E5%8F%91%E7%8E%B0/%E6%9C%8D%E5%8A%A1%E5%8F%91%E7%8E%B0.png">
+<meta name="twitter:image" content="http://yoursite.com/images/%E6%9C%8D%E5%8A%A1%E5%8F%91%E7%8E%B0.png">
 
-<link rel="canonical" href="http://yoursite.com/2020/06/%E6%9C%8D%E5%8A%A1%E5%8F%91%E7%8E%B0/">
+<link rel="canonical" href="http://yoursite.com/%E6%9C%8D%E5%8A%A1%E5%8F%91%E7%8E%B0/">
 
 
 <script id="page-configurations">
@@ -127,6 +129,11 @@
     <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
 
   </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
         <li class="menu-item menu-item-archives">
 
     <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
@@ -160,7 +167,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/%E6%9C%8D%E5%8A%A1%E5%8F%91%E7%8E%B0/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/%E6%9C%8D%E5%8A%A1%E5%8F%91%E7%8E%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -182,21 +189,34 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-06-11 20:05:13 / Modified: 23:40:31" itemprop="dateCreated datePublished" datetime="2020-06-11T20:05:13+08:00">2020-06-11</time>
+              <time title="Created: 2020-06-11 20:05:13" itemprop="dateCreated datePublished" datetime="2020-06-11T20:05:13+08:00">2020-06-11</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-06-30 13:28:52" itemprop="dateModified" datetime="2020-06-30T13:28:52+08:00">2020-06-30</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+                  <a href="/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" itemprop="url" rel="index"><span itemprop="name">微服务</span></a>
                 </span>
             </span>
 
           
+            <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
 
         </div>
       </header>
@@ -208,9 +228,10 @@
 
       
         <h2 id="服务发现"><a href="#服务发现" class="headerlink" title="服务发现"></a>服务发现</h2><p>服务发现有三个角色，服务提供者、服务消费者和服务中介，消费者调用 REST API 或者 Thrift API 的服务，需要知道服务实例的网络位置（IP和端口）</p>
-<p><img src="/2020/06/%E6%9C%8D%E5%8A%A1%E5%8F%91%E7%8E%B0/%E6%9C%8D%E5%8A%A1%E5%8F%91%E7%8E%B0.png" alt="服务发现"></p>
+<p><img src="/images/%E6%9C%8D%E5%8A%A1%E5%8F%91%E7%8E%B0.png" alt=""></p>
 <h2 id="代理模式"><a href="#代理模式" class="headerlink" title="代理模式"></a>代理模式</h2><p>关于服务发现和负载均衡，业界探索和总结出一些常用的模式，这些模式的核心是代理，以及代理在架构中所处的位置。</p>
-<h3 id="集中式代理"><a href="#集中式代理" class="headerlink" title="集中式代理"></a>集中式代理</h3><p>硬件负载均衡器F5和软件负载均衡器Nginx，在DNS域名服务器配合下实现服务发现，建立服务域名和IP地址之间的映射关系</p>
+<h3 id="集中式代理"><a href="#集中式代理" class="headerlink" title="集中式代理"></a>集中式代理</h3><p><img src="/images/%E7%8B%AC%E7%AB%8BLB.png" alt=""></p>
+<p>硬件负载均衡器F5和软件负载均衡器Nginx，在DNS域名服务器配合下实现服务发现，建立服务域名和IP地址之间的映射关系</p>
 <ul>
 <li>运维简单、集中治理、语言无关</li>
 </ul>
@@ -220,7 +241,8 @@
 <ul>
 <li>大中小公司都适用，可以进行改造自注册</li>
 </ul>
-<h3 id="客户端嵌入式代理"><a href="#客户端嵌入式代理" class="headerlink" title="客户端嵌入式代理"></a>客户端嵌入式代理</h3><p>代理以客户端形式嵌入在程序中，服务实例自注册到注册中心并定期健康检查，客户端代理自发现服务并进行负载均衡</p>
+<h3 id="客户端嵌入式代理"><a href="#客户端嵌入式代理" class="headerlink" title="客户端嵌入式代理"></a>客户端嵌入式代理</h3><p><img src="/images/%E8%BF%9B%E7%A8%8B%E5%86%85LB.png" alt=""></p>
+<p>代理以客户端形式嵌入在程序中，服务实例自注册到注册中心并定期健康检查，客户端代理自发现服务并进行负载均衡</p>
 <ul>
 <li>无单点问题，性能好</li>
 </ul>
@@ -230,7 +252,8 @@
 <ul>
 <li>Eureka、Dubbo</li>
 </ul>
-<h3 id="主机独立进程代理"><a href="#主机独立进程代理" class="headerlink" title="主机独立进程代理"></a>主机独立进程代理</h3><p>代理作为独立进程部署在每一个主机上，既不是独立集中部署，也不嵌入客户应用程序，一个主机上多个消费者共用这个代理，实现服务发现和负载均衡</p>
+<h3 id="主机独立进程代理"><a href="#主机独立进程代理" class="headerlink" title="主机独立进程代理"></a>主机独立进程代理</h3><p><img src="/images/%E4%B8%BB%E6%9C%BA%E7%8B%AC%E7%AB%8B%E8%BF%9B%E7%A8%8BLB.png" alt=""></p>
+<p>代理作为独立进程部署在每一个主机上，既不是独立集中部署，也不嵌入客户应用程序，一个主机上多个消费者共用这个代理，实现服务发现和负载均衡</p>
 <ul>
 <li>部署运维复杂</li>
 <li>Service Mesh、Istio</li>
@@ -238,7 +261,7 @@
 <h2 id="Eureka"><a href="#Eureka" class="headerlink" title="Eureka"></a><a href="https://github.com/Netflix/eureka" target="_blank" rel="noopener">Eureka</a></h2><blockquote>
 <p>Eureka is a REST (Representational State Transfer) based service that is primarily used in the AWS cloud for locating services for the purpose of load balancing and failover of middle-tier servers. We call this service, the Eureka Server. Eureka also comes with a Java-based client component,the Eureka Client, which makes interactions with the service much easier. The client also has a built-in load balancer that does basic round-robin load balancing.</p>
 </blockquote>
-<p><img src="/2020/06/%E6%9C%8D%E5%8A%A1%E5%8F%91%E7%8E%B0/Eureka.png" alt="Eureka"></p>
+<p><img src="/images/Eureka.png" alt="Eureka"></p>
 <ul>
 <li>Service Provider会向Eureka Server做Register（服务注册）、Renew（服务续约）、Cancel（服务下线）等操作。</li>
 <li>Eureka Server之间会做注册服务的同步，从而保证状态一致</li>
@@ -249,43 +272,43 @@
 <li>第一层hash map的key是app name，也就是应用名字</li>
 <li>第二层hash map的key是instance name，也就是实例名字</li>
 </ul>
-<p><img src="/2020/06/%E6%9C%8D%E5%8A%A1%E5%8F%91%E7%8E%B0/Eureka%E6%B3%A8%E5%86%8C.png" alt="Eureka注册"></p>
+<p><img src="/images/Eureka%E6%B3%A8%E5%86%8C.png" alt=""></p>
 <ol>
 <li>ApplicationResource类接收Http服务请求，调用PeerAwareInstanceRegistryImpl的register方法</li>
 <li>PeerAwareInstanceRegistryImpl完成服务注册后，调用replicateToPeers向其它Eureka Server节点（Peer）做状态同步（异步操作）</li>
 </ol>
 <h3 id="Renew"><a href="#Renew" class="headerlink" title="Renew"></a>Renew</h3><p>Renew（服务续约）操作由Service Provider定期调用，类似于heartbeat。主要是用来告诉Eureka Server Service Provider还活着，避免服务被剔除掉。</p>
-<p><img src="/2020/06/%E6%9C%8D%E5%8A%A1%E5%8F%91%E7%8E%B0/Eureka%E7%BB%AD%E7%BA%A6.jpg" alt="Eureka续约"></p>
+<p><img src="/images/Eureka%E7%BB%AD%E7%BA%A6.jpg" alt=""></p>
 <ul>
 <li>instance.leaseRenewalIntervalInSeconds (Renew频率。默认是30秒)</li>
 <li>instance.leaseExpirationDurationInSeconds (服务失效时间。默认是90秒)</li>
 </ul>
 <h3 id="Cancel"><a href="#Cancel" class="headerlink" title="Cancel"></a>Cancel</h3><p>Cancel（服务下线）一般在Service Provider shut down的时候调用,通过对方法标记@PreDestroy，从而在服务shut down的时候会被触发，把自身的服务从Eureka Server中删除，以防客户端调用不存在的服务。</p>
-<p><img src="/2020/06/%E6%9C%8D%E5%8A%A1%E5%8F%91%E7%8E%B0/Eureka%E4%B8%8B%E7%BA%BF.jpg" alt="Eureka下线"></p>
-<h3 id="Fetch-Registries"><a href="#Fetch-Registries" class="headerlink" title="Fetch Registries"></a>Fetch Registries</h3><p><img src="/2020/06/%E6%9C%8D%E5%8A%A1%E5%8F%91%E7%8E%B0/Eureka%E8%8E%B7%E5%8F%96%E6%9C%8D%E5%8A%A1.png" alt="Eureka获取服务"></p>
+<p><img src="/images/Eureka%E4%B8%8B%E7%BA%BF.jpg" alt=""></p>
+<h3 id="Fetch-Registries"><a href="#Fetch-Registries" class="headerlink" title="Fetch Registries"></a>Fetch Registries</h3><p><img src="/images/Eureka%E8%8E%B7%E5%8F%96%E6%9C%8D%E5%8A%A1.png" alt=""></p>
 <ul>
 <li>Service Consumer在启动时会从Eureka Server获取所有服务列表，并在本地缓存。</li>
 <li>由于在本地有一份缓存，所以需要定期更新，定期更新频率可以通过eureka.client.registryFetchIntervalSeconds配置。</li>
 </ul>
 <h3 id="Eviction"><a href="#Eviction" class="headerlink" title="Eviction"></a>Eviction</h3><p>Eviction（失效服务剔除）用来定期（默认为每60秒）在Eureka Server检测失效的服务，检测标准就是超过一定时间没有Renew的服务。</p>
-<p><img src="/2020/06/%E6%9C%8D%E5%8A%A1%E5%8F%91%E7%8E%B0/Eureka%E5%89%94%E9%99%A4.png" alt="Eureka剔除"></p>
+<p><img src="/images/Eureka%E5%89%94%E9%99%A4.png" alt=""></p>
 <ul>
 <li>eureka.instance.leaseExpirationDurationInSeconds (默认失效时间为90秒)</li>
 <li>eureka.server.evictionIntervalTimerInMs (定期,默认为每60秒)</li>
 </ul>
 <h3 id="自保护"><a href="#自保护" class="headerlink" title="自保护"></a>自保护</h3><p>Eureka在运行期间会统计心跳失败的比例，在15分钟内是否低于85%,如果出现了低于的情况，Eureka Server会将当前的实例注册信息保护起来，同时提示一个警告，一旦进入保护模式，Eureka Server将会尝试保护其服务注册表中的信息，不再删除服务注册表中的数据。也就是不会注销任何微服务。</p>
 <h3 id="CAP"><a href="#CAP" class="headerlink" title="CAP"></a>CAP</h3><p>Peer之间的状态是采用异步的方式同步的，所以不保证节点间的状态一定是一致的，不过基本能保证最终状态是一致的。<br>按照CAP理论，Eureka的选择就是放弃C，选择AP。</p>
-<h2 id="Nacos"><a href="#Nacos" class="headerlink" title="Nacos"></a>Nacos</h2><blockquote>
+<h2 id="Nacos"><a href="#Nacos" class="headerlink" title="Nacos"></a><a href="https://www.processon.com/view/5e25b762e4b04579e409e81f" target="_blank" rel="noopener">Nacos</a></h2><blockquote>
 <p>Nacos is committed to help you discover, configure, and manage your microservices. It provides a set of simple and useful features enabling you to realize dynamic service discovery, service configuration, service metadata and traffic management.</p>
 </blockquote>
 <blockquote>
 <p>Nacos makes it easier and faster to construct, deliver and manage your microservices platform. It is the infrastructure that supports a service-centered modern application architecture with a microservices or cloud-native approach.</p>
 </blockquote>
-<p><img src="/2020/06/%E6%9C%8D%E5%8A%A1%E5%8F%91%E7%8E%B0/Nacos%E6%9E%B6%E6%9E%84.png" alt="Nacos架构"></p>
+<p><img src="/images/Nacos%E6%9E%B6%E6%9E%84.png" alt=""></p>
 <h2 id="Service-Mesh"><a href="#Service-Mesh" class="headerlink" title="Service Mesh"></a>Service Mesh</h2><p>Service Mesh又称为服务网格,每个主机上同时运行了业务逻辑代码和代理。</p>
 <p>这个代理被形象地称之为SideCar，服务之间通过SideCar发现和调用目标服务，从而形成服务之间的一种网络状依赖关系。</p>
 <p>然后通过独立部署的一种称之为控制平面（ControlPlane）的独立组件来集中配置这种依赖调用关系以及进行路由流量调拨等操作</p>
-<p><img src="/2020/06/%E6%9C%8D%E5%8A%A1%E5%8F%91%E7%8E%B0/Istio%E6%9E%B6%E6%9E%84.png" alt="Istio架构"></p>
+<p><img src="/images/Istio%E6%9E%B6%E6%9E%84.png" alt=""></p>
 
     </div>
 
@@ -294,9 +317,6 @@
     
 
       <footer class="post-footer">
-          <div class="post-tags">
-              <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" rel="tag"># 微服务</a>
-          </div>
 
         
 
@@ -304,7 +324,7 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/06/RPC%E8%BF%9C%E7%A8%8B%E8%B0%83%E7%94%A8/" rel="prev" title="RPC远程调用">
+    <a href="/%E6%9C%8D%E5%8A%A1%E8%B0%83%E7%94%A8/" rel="prev" title="RPC远程调用">
       <i class="fa fa-chevron-left"></i> RPC远程调用
     </a></div>
       <div class="post-nav-item"></div>
@@ -380,7 +400,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-count">4</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -391,11 +411,19 @@
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
 </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/injureLi" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;injureLi" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/injure.li.cn@gmail.com" title="E-Mail → injure.li.cn@gmail.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
 
 
 
@@ -428,6 +456,26 @@
   </div>
 
         
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
 
 
 
